@@ -377,8 +377,6 @@ compare the git diff and jacoco result
 generate the report of which java file changed, and how many lines be covered on new code.
 """
 def report(diff_report, jacoco_html_report_path):
-#     diff_report={u'pom.xml': [188, 189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 311, 312, 313, 314, 315, 316, 317, 318, 319, 320, 321, 322, 323, 324, 325, 326, 327, 328, 329, 330, 331, 332, 333, 334, 335, 336, 337, 338, 339, 340, 341], u'src/main/java/com/zuora/event/transformer/TransformerApplication.java': [22, 23, 24, 25, 26, 27, 28, 29, 30, 32, 33, 34, 35, 36, 37, 38, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]}
-#     jacoco_report_path="/Users/mli/work/git/sonarbitbucket/target/site/jacoco/"
     report={}
     for key in diff_report.keys():
         print("In parsing...->"+key)
@@ -522,7 +520,7 @@ def generateHtml(report, jacoco_html_path):
     '</td><td class="ctr1">'+str(total_fc)+'</td><td class="ctr2">'+'{percent:.2%}'.format(percent=total_fc/float(total_new) if total_new else 0)+\
     '</td></tr></tfoot></table>'            
     html=html+table
-    html=html+'<div class="footer"><span class="right">Zuora Code Coverage Report</span></div>'
+    html=html+'<div class="footer"><span class="right">Code Coverage on new code Report</span></div>'
     html=html+'</body></html>'   
     with open(jacoco_html_path+"/coverageOnNewCode.html", 'w') as file:
        file.write(html)
